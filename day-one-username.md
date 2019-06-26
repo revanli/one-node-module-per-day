@@ -1,12 +1,12 @@
-### 每天阅读一个npm模块(1) - username
+## 每天阅读一个npm模块(1) - username
 
-#### 前言
+### 前言
 最近看到博客[每天阅读一个 npm 模块（1）- username](https://juejin.im/post/5b803ee6e51d4538e567a85c)，觉得作者的这个想法很好，每天阅读一个npm模块，积少成多，聚沙成塔。好处是：一可以扩展下见识，知道有那些轮子；二是知道这些轮子的原理，方便在自己造轮子的时候能信手拈来；三是可以锻炼下毅力，持续更新。
 
-#### 介绍
+### 介绍
 [username](https://www.npmjs.com/package/username)(v 5.0.0)模块是获取系统当前用户的名字
 
-#### 用法
+### 用法
 username支持同步和Promise异步写法：
 ```javascript
 const username = require('username');
@@ -21,14 +21,14 @@ console.log(username.sync()); // => revan
 })();
 ```
 
-#### 原理
+### 原理
 1. 通过**process.env**变量中的值获取用户名，若存，直接返回
 2. 若存在**os.userInfo**函数，通过**os.userInfo().username**获得用户名并返回
 3. 若以上方法都获取不到数据，则在OS X/Linux下通过制定**id -un**命令，Windows通过**whoami**命令获取，然后用正则过滤得到username
 
 接下来结合源码对这三步进行研究
 
-##### process.env
+#### process.env
 ```javascript
 // 源代码 1-1 
 const getEnvironmentVariable = () => {
@@ -66,7 +66,7 @@ $ printenv USER
 
 当用户身份是root时，此时**USER**变量会返回root，而**SUDO_USER**变量返回的是登陆为root的账户名
 
-##### os.userInfo
+#### os.userInfo
 
 ```javascript
 // 源代码1-2
@@ -76,7 +76,7 @@ const getUsernameFromOsUserInfo = () => {
   } catch (_) {}
 };
 ```
-**os.userInfo()返回的是当前用户的一些信息
+**os.userInfo()**返回的是当前用户的一些信息
 
 ```javascript
 const os = require('os')
@@ -91,7 +91,7 @@ console.log(os.userInfo())
 // => }
 ```
 
-##### 执行命令行命令
+#### 执行命令行命令
 
 当前两种方式都无法获取用户名时，在OS X/Linux下会通过**id -un**命令获取用户名，在Windows会通过whoami命令获取用户名。[execa](https://www.npmjs.com/package/execa)，node官方child_process的增强包
 ```javascript
@@ -105,7 +105,7 @@ try {
 ```
 **process.platform**会返回当前的平台，包括aix|darwin|freebsd|linux|openbsd|sunos|win32，当命令执行异常时，会返回undefined给到用户，从使用者角度来说，这样处理的好处是：一作为使用者，只关心能否拿到正确结果，不关心包的内部异常信息，多余的出错信息是一种干扰，二返回**undefined**有利于使用者处理逻辑
 
-#### 总结
+### 总结
 通过阅读username源码
 1.了解SUDO_USER与USER变量的区别
 2.知道process.env的增删查改

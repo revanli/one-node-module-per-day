@@ -4,6 +4,7 @@
   "description": "每天阅读一个小而美的node module模块，积少成多，聚沙成塔，在繁忙的工作中提升自身的技术水平，不断学习。",
   "main": "index.js",
   "dependencies": {
+    "mem": "^5.0.0",
     "username": "^5.0.0"
   },
   "devDependencies": {},
