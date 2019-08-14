@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outDir": "./build",
+    "sourceMap": false,
+    "esModuleInterop": true
+  },
+  "include": [
+    "example/*",
+    "global.d.ts"
+  ],
+}

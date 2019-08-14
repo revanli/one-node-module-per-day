@@ -6,6 +6,7 @@
   "dependencies": {
     "mem": "^5.0.0",
     "mimic-fn": "^3.0.0",
+    "throttle-debounce": "^2.1.0",
     "username": "^5.0.0"
   },
   "devDependencies": {},
