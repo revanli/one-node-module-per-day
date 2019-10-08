@@ -168,3 +168,4 @@ function first (stuff, done) {
 这里声明了一个函数`thunk`，把需要两个参数的`first(stuff, done)`转换成只需要一个回调函数作为参数的`thunk(done)`返回。thunk函数就是将一段代码通过函数包裹返回，[阮一峰老师的说法](http://www.ruanyifeng.com/blog/2015/05/thunk.html)
 > 在 JavaScript 语言中，Thunk 函数替换的不是表达式，而是多参数函数，将其替换成单参数的版本，且只接受回调函数作为参数。
 
+
